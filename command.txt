@@ -1,4 +1,18 @@
-add_user  "Arvin"
-add_user "Arthur"
-list_userfs
-add_user "Aper"
+ADD_PLAYER Alice
+ADD_PLAYER Bob
+ADD_PLAYER Carol
+ADD_SCORE Alice 120
+ADD_SCORE Bob 95
+ADD_SCORE Alice 180
+ADD_SCORE Carol 180
+ADD_SCORE Bob 210
+CURRENT Alice 
+BEST Bob
+HISTORY Alice 3
+TOP_K 2
+PRINT_ALL
+REMOVE_PLAYER Carol
+PRINT_ALL
+CLEAR
+LEN
+QUIT

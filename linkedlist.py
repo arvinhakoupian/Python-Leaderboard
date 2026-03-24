@@ -1,81 +1,31 @@
 class Node:
-    def __init__(self, data=None, next=None):
-        self.data = data
-        self.next = next
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
 
 class LinkedList:
     def __init__(self):
         self.head = None
+        self.length = 0
 
-    def insert_at_beginning(self, data):
-        node = Node(data, self.head)
+    def add_first(self, value):
+        node = Node(value)
+        node.next = self.head
         self.head = node
+        self.length += 1
 
-    def print(self):
-        if self.head is None:
-            print("Linked list is empthy")
-
-        itr = self.head
-        llstr = ""
-
-        while itr:
-            llstr += str(itr.data) + "-->"
-            itr = itr.next
-        print(llstr)
-
-    def insert_at_end(self, data):
-        if self.head is None:
-            self.head = Node(data, None)
-            return
-
-        itr = self.head
-        while itr.next:
-            itr = itr.next
-
-        itr.next = Node(data, None)
-
-    def insert_values(self, data_list):
+    def clear(self):
         self.head = None
-        for data in data_list:
-            self.insert_at_end(data)
-        
-    def get_lenght(self):
-        count = 0
-        itr = self.head
-        while itr:
-            count +=1
-            itr = itr.next
+        self.length = 0
 
-        return count
+    def __len__(self):
+        return self.length
 
-    def remove_at(self, index):
-        if index< 0 or index>=self.get_lenght():
-            raise Exception("Invalid index")
-
-        if index==0:
-            self.head = self.head.next
-            return
-
-        count = 0
-        itr = self.head
-        while itr:
-            if count == index - 1:
-                itr.next = itr.next.next
-                break
-
-            itr = itr.next
-            count += 1
-
-ll = LinkedList()
-ll.insert_at_beginning("apple")
-ll.insert_at_beginning("mango")
-ll.insert_at_beginning("pinapple")
-ll.insert_at_end("orange")
-ll.insert_values(["xndzor","tandz"])
-try:
-    ll.remove_at(1)
-except:
-    print("error")
-print(ll.get_lenght())
-ll.print()
-ll.print()
+    def to_list(self):
+        values = []
+        current = self.head
+        while current is not None:
+            values.append(current.value)
+            current = current.next
+        return values
